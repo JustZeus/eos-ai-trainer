@@ -89,6 +89,6 @@ This will be the configuration and administration element of the solution, devel
 </table>
 
 ## Cloud Architecture
-![cloud architecture diagram]("" "Cloud Architecture")
+![cloud architecture diagram](https://raw.githubusercontent.com/JustZeus/eos-ai-trainer/main/img/EOS_Azure_Arch.png "Cloud Architecture")
 
 ## Demo
