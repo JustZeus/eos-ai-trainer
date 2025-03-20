@@ -14,6 +14,7 @@ In the ever-evolving landscape of manufacturing, inclusivity and accessibility a
 - [Project description](#eos-ai-trainer)
 - [How does it work?](#how-does-it-work)
 - [Used Tools](#used-tools)
+- [Cloud Architecture](#cloud-architecture)
 - [Demo](#demo)
 
 
@@ -86,5 +87,8 @@ This will be the configuration and administration element of the solution, devel
         </td>
     </tr>
 </table>
+
+## Cloud Architecture
+![cloud architecture diagram]("" "Cloud Architecture")
 
 ## Demo
