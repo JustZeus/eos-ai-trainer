@@ -1,5 +1,5 @@
 # EOS AI Trainer 
-🤖 Eos - Enhanced Orienting Space - AI enhanced space to help supported employment coaches to provide interactive trainings and informations for visually impared individuals, enhanced by Microsoft Azure AI Services and cloud infraestructure.
+🤖 Eos - Enhanced Orienting Space - AI enhanced space to help supported employment coaches to provide interactive trainings and information for visually impared individuals, enhanced by Microsoft Azure AI Services and cloud infraestructure.
 
 In the ever-evolving landscape of manufacturing, inclusivity and accessibility and Supported employment are paramount. Our software is at the forefront of this movement, designed specifically to revolutionize the way visually impaired individuals work at manufacturing assembly sites. By integrating LLM, advanced voice recognition and custom vision technologies, we are breaking new ground in creating a more inclusive and efficient work environment.
 
