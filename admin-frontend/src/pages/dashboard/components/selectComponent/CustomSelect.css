@@ -1,0 +1,99 @@
+.dashboardSection .select-menu{
+  position: absolute;
+  top: 0px;
+  width: 380px;
+  background: #fff;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI1LjAwMDEgMzYuNzcwOEMyNC4xNjY3IDM2Ljc3MDggMjMuMzMzNCAzNi4zNTQxIDIyLjkxNjcgMzUuOTM3NUw5LjE2Njc1IDIyLjE4NzVDNy45MTY3NSAyMC45Mzc1IDcuOTE2NzUgMTguODU0MSA5LjE2Njc1IDE3LjYwNDFDMTAuNDE2NyAxNi4zNTQxIDEyLjUwMDEgMTYuMzU0MSAxMy43NTAxIDE3LjYwNDFMMjUuMDAwMSAyOC44NTQxTDM2LjI1MDEgMTcuNjA0MUMzNy41MDAxIDE2LjM1NDEgMzkuNTgzNCAxNi4zNTQxIDQwLjgzMzQgMTcuNjA0MUM0Mi4wODM0IDE4Ljg1NDEgNDIuMDgzNCAyMC45Mzc1IDQwLjgzMzQgMjIuMTg3NUwyNy41MDAxIDM1LjUyMDhDMjYuNjY2NyAzNi4zNTQxIDI1LjgzMzQgMzYuNzcwOCAyNS4wMDAxIDM2Ljc3MDhaIiBmaWxsPSIjQTFBMUFBIi8+Cjwvc3ZnPgo=");
+  background-repeat: no-repeat, repeat;
+  background-position: right 1em top 50%, 0 0;
+  background-size: 35px;
+  font-family: Gotham;
+  cursor: pointer;
+}
+
+
+.select-menu input[type='checkbox']{
+  opacity: 0;
+  display: none;
+}
+
+.select-menu input[type="checkbox"]:checked ~ .options{
+  display: flex;
+}
+
+.select-menu input[type="checkbox"]:checked ~ .select-btn{
+  border: 2px solid #3B82F6;
+
+}
+
+.dashboardSection .select-menu .select-btn{
+  display: flex;
+  height: 55px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 400;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+}
+
+.select-menu  label{
+  cursor: pointer;
+}
+
+.dashboardSection .select-btn i{
+  font-size: 25px;
+}
+
+.dashboardSection .select-menu .options{
+  z-index: 2;
+  position: absolute;
+  top: 10px;
+  height: 200px;
+  position: relative;
+  flex-wrap: wrap;
+  overflow: scroll;
+  overflow-x: hidden;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 0 3px rgb(0, 0, 0, 0.2);
+  display: none;
+}
+
+.dashboardSection .options::-webkit-scrollbar{
+  width: 4px;
+}
+
+.dashboardSection .options::-webkit-scrollbar-thumb{
+  background: #D4D4D8;
+  border-radius: 10px;
+}
+
+
+.dashboardSection .options .option{
+  display: flex;
+  height: 55px;
+  width: 100%;
+  cursor: pointer;
+  padding: 0 16px;
+  border-radius: 8px;
+  align-items: center;
+  background: #fff;
+
+}
+
+.dashboardSection .options .option:hover{
+  background: #F2F2F2;
+}
+
+.dashboardSection .option .option-text{
+  font-size: 18px;
+}
+

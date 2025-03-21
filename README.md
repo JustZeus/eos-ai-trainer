@@ -94,3 +94,36 @@ This will be the configuration and administration element of the solution, devel
 
 ## Demo
 
+### Frontend
+
+The web application for managing workouts consists of a login and a dashboard, which displays the workouts that have been created, their progress, and execution status. You can also start a new workout and view the one currently running.
+
+First you must authenticate with a login, which will take you to the administration dashboard:
+
+![Frontend Login](https://raw.githubusercontent.com/JustZeus/eos-ai-trainer/main/img/1-login.png "Frontend")
+![Frontend Login](https://raw.githubusercontent.com/JustZeus/eos-ai-trainer/main/img/2-login.png "Frontend")
+
+Below are images of the dashboard:
+
+![Frontend Dashboard](https://raw.githubusercontent.com/JustZeus/eos-ai-trainer/main/img/3-dashboard.png "Frontend")
+
+You can select a new workout, which should only be started if no other workout is currently running.
+
+![Frontend Dashboard](https://raw.githubusercontent.com/JustZeus/eos-ai-trainer/main/img/4-dashboard.png "Frontend")
+
+You can view the current workout and stop it. In the list of created workouts, you can view their information and start or stop them.
+
+![Fronten Dashboard](https://raw.githubusercontent.com/JustZeus/eos-ai-trainer/main/img/5-dashboard.png "Frontend")
+
+In the following three images you can see that the list of workouts can be filtered by: 
+- The number of the workout created (example: 1).
+
+![Frontend Dashboard](https://raw.githubusercontent.com/JustZeus/eos-ai-trainer/main/img/6-dashboard.png "Frontend")
+
+- The number of the workout (example: "train 2").
+
+![Frontend Dashboard](https://raw.githubusercontent.com/JustZeus/eos-ai-trainer/main/img/7-dashboard.png "Frontend")
+
+- The name of the workout (example: Assembly A96).
+
+![Frontend Dashboard](https://raw.githubusercontent.com/JustZeus/eos-ai-trainer/main/img/8-dashboard.png "Frontend")
