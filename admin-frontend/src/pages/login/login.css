@@ -1,0 +1,269 @@
+
+body{
+    margin: 0;
+    font-family: Gotham;
+}
+
+.loginSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient( #695CFE, #0a46a5);
+    background-size: cover;
+    background-position: center;
+}
+
+.wrapper{
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.2);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 0px 40px 70px;
+    padding-top: 0px;
+}
+
+
+.wrapper .brand{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    column-gap: 15px;
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.637);
+    margin-bottom: 60px;
+    p{
+        margin:0;
+    }
+}
+
+.wrapper .brand p:nth-child(1){
+    font-size: 45px;
+    font-weight: bolder;
+}
+
+.wrapper .brand p:nth-child(2){
+    font-size: 10px;
+    width: 50px;
+    text-align: left;
+}
+
+
+.wrapper h3{
+    font-size: 36px;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.wrapper h1{
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+.wrapper .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.input-box input{
+    width: calc(100% - 50px);
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none ;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 20px;
+    padding-left: 30px;
+}
+
+.input-box input::placeholder{
+    color: #fff 
+}
+
+
+/* ------------- icon ---------*/
+.input-box .iconLogin{
+    position: absolute;
+    right: 20px;
+    top: 58%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    background: none;
+    border: none;
+    width: 25px;
+
+}
+
+.input-box .pwd{
+    cursor: pointer;
+}
+
+/* -------- */
+
+
+.wrapper .remember-forget{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+}
+
+.remember-forget label input{
+    accent-color: #fff;
+    margin-right: 3px ;
+    cursor: pointer;
+}
+
+.remember-forget a{
+    color: #fff;
+    text-decoration: none;
+}
+.remember-forget a:hover{
+    text-decoration: underline;
+
+}
+
+.wrapper .btn  {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px ;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin-top: 30px;
+}
+
+.wrapper .btn:hover{
+    background: rgba(255,255,255,0.5);
+    color: #fff;
+    border-color: #fff;
+}
+
+
+/* --------- */
+
+.continue{
+    margin-bottom: 20px;
+}
+
+.googleContinue{
+    cursor: pointer;
+}
+
+.googleContinue img{
+    width: 20px;
+}
+
+.wrapper .line{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+    margin-bottom: 30px;
+}
+
+.wrapper .line div{
+    width: 80%;
+    border: 1px solid #fff;
+}
+
+/* ------------ Burbujas --------- */
+
+
+.burbuja {
+    border-radius: 50%;
+    background: #fff;
+    opacity: .3;
+
+    position: absolute;
+    bottom: 0;
+
+    animation: burbujas 3s linear infinite;
+}
+
+.burbuja:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    left: 5%;
+    animation-duration: 3s;
+}
+
+.burbuja:nth-child(2) {
+    width: 100px;
+    height: 100px;
+    left: 35%;
+    animation-duration: 4s;
+}
+
+.burbuja:nth-child(3) {
+    width: 30px;
+    height: 30px;
+    left: 48%;
+    animation-duration: 5s;
+}
+
+.burbuja:nth-child(4) {
+    width: 80px;
+    height: 80px;
+    left: 60%;
+    animation-duration: 6s;
+}
+
+.burbuja:nth-child(5) {
+    width: 50px;
+    height: 50px;
+    left: 70%;
+    animation-duration: 4s;
+}
+
+.burbuja:nth-child(6) {
+    width: 80px;
+    height: 80px;
+    left: 90%;
+    animation-duration: 5s;
+}
+
+.burbuja:nth-child(7) {
+    width: 40px;
+    height: 40px;
+    left: 80%;
+    animation-duration: 3s;
+}
+
+.burbuja:nth-child(8) {
+    width: 40px;
+    height: 40px;
+    left: 20%;
+    animation-duration: 3.5s;
+}
+
+@keyframes burbujas {
+    0% {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    50% {
+        opacity: .4;
+    }
+
+    100% {
+        bottom: 100vh;
+        opacity: 0;
+    }
+}
