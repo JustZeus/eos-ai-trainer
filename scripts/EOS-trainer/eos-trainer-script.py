@@ -75,8 +75,6 @@ def textToSpeech(text):
                 print("Error details: {}".format(cancellation_details.error_details))
 
 def openAIFunction(question, responseBefore):
-    # label = ttk.Label(text=question)
-    # label.place(x=100, y=100)
     nowQuestion = {"role": "user", "content": question}
     message = []
     if responseBefore == "":
