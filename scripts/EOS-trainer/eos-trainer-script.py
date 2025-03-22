@@ -17,15 +17,7 @@ from threading import Thread
 customtkinter.set_appearance_mode("System")  # Modes: system (default), light, dark
 customtkinter.set_default_color_theme("green")  # Themes: blue (default), dark-blue, green
 
-# Open the demonstration training file
-with open("train.txt", "r") as file:
-    text = file.readlines()
-    # print(text)
-    indexIntro = text.index('Press the button to start\n')
-    indexSteps = text.index('Press the button to begin the instructions.\n') 
-    indexSteps = indexSteps + 1
-    # print("index")
-    # print(len(text))
+
 
 SPEECH_KEY = os.environ[""]
 
@@ -53,6 +45,17 @@ client = AzureOpenAI(
 #Speach SDK Configuration
 speech_config = speechsdk.SpeechConfig(subscription=SPEECH_KEY, region=SPEECH_REGION)
 audio_config = speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
+
+
+# Open the demonstration training file
+with open("training.txt", "r") as file:
+    text = file.readlines()
+    # print(text)
+    indexIntro = text.index('Press the button to start.\n')
+    indexSteps = text.index("Okay, now that you know the parts, let's start with the assembly. Press the button to begin the instructions.\n") 
+    indexSteps = indexSteps + 1
+    print("index")
+    print(len(text))
 
 def textToSpeech(text):
     # The neural multilingual voice can speak different languages based on the input text.
@@ -92,7 +95,7 @@ def openAIFunction(question, responseBefore):
     response = client.chat.completions.create(
         model="gpt-4o-mini", 
         messages= message,
-        max_tokens=100
+        max_tokens=80
     )
     
     result = response.choices[0].message.content
@@ -119,7 +122,7 @@ def recognize_from_microphone():
         return speech_recognition_result.text
     elif speech_recognition_result.reason == speechsdk.ResultReason.NoMatch:
         print("No speech could be recognized: {}".format(speech_recognition_result.no_match_details))
-        textToSpeech("No te entendí, repite la pregunta, por favor")
+        textToSpeech("I don't understand you, repeat the question please.")
         speech = recognize_from_microphone()
         openAIFunction(speech, "")
     elif speech_recognition_result.reason == speechsdk.ResultReason.Canceled:
@@ -138,9 +141,6 @@ def start(imageLabel):
     global contador
     global step
 
-    validation = validationService(imageLabel)
-    # print(validationService(imageLabel))
-
     if(contador < len(text)):
         if contador <= indexIntro:
             speechText = ""
@@ -154,6 +154,8 @@ def start(imageLabel):
             textToSpeech(text[contador])
         if indexSteps <= contador:
             if contador == (indexSteps + 1):
+                validation = validationService(imageLabel)
+                # print(validation)
                 if validation == "dissasembly":
                     # print(validationAnsware )
                     textToSpeech(validationAnsware)
@@ -171,8 +173,10 @@ def start(imageLabel):
                     # print(text[contador])
                     textToSpeech(text[contador])
             elif contador == (indexSteps + 2):
+                validation = validationService(imageLabel)
+                print(validation)
                 if validation == "half":
-                    # print(validationAnsware )
+                    # print(validationAnsware)
                     textToSpeech(validationAnsware)
                     # print(text[contador])
                     textToSpeech(text[contador])  
@@ -188,6 +192,8 @@ def start(imageLabel):
                     textToSpeech(text[contador])
                     # print(text[contador])
             elif  contador == (indexSteps + 3):
+                validation = validationService(imageLabel)
+                print(validation)
                 if validation == "complete":
                     # print(validationAnsware )
                     textToSpeech(validationAnsware)
@@ -225,7 +231,7 @@ def predictionHandler(id):
             for prediction in results.predictions:
                 if(prediction.probability > 0.75):
                     top_predictions.append({'tag_name': prediction.tag_name, 'probability': prediction.probability})
-                print("\t" + prediction.tag_name + ": {0:.2f}% bbox.left = {1:.2f}, bbox.top = {2:.2f}, bbox.width = {3:.2f}, bbox.height = {4:.2f}".format(prediction.probability * 100, prediction.bounding_box.left, prediction.bounding_box.top, prediction.bounding_box.width, prediction.bounding_box.height))
+                # print("\t" + prediction.tag_name + ": {0:.2f}% bbox.left = {1:.2f}, bbox.top = {2:.2f}, bbox.width = {3:.2f}, bbox.height = {4:.2f}".format(prediction.probability * 100, prediction.bounding_box.left, prediction.bounding_box.top, prediction.bounding_box.width, prediction.bounding_box.height))
             # First Prediction formating 
             sorted_results = sorted(top_predictions, key=lambda x: x['probability'], reverse=True)
             prediction_statement = f'VALIDATION RESULTS \nPiece is: -->  { sorted_results[0]["tag_name"] } \nWith Score: { round((sorted_results[0]["probability"] * 100), 2) } %' 
