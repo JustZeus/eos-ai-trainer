@@ -60,10 +60,10 @@ This will be the configuration and administration element of the solution, devel
     </tr>
     <tr>
         <td>
-           <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"> 
+           React.js
         </td>
         <td>
-            The REST services and administration backend is developed around the node.js environment. 
+            It is open-source JavaScript library that allows you to create user interfaces for web and mobile applications. React.js with CSS was used to create the web application to manage the training.
         </td>
     </tr>
      </tr>
@@ -76,12 +76,6 @@ This will be the configuration and administration element of the solution, devel
         </td>
     </tr>
     <tr>
-        <td>
-            <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">
-        </td>
-        <td>
-            MongoDB is a document database used to build highly available and scalable internet applications. This technology will store user data and progress as well as the training information and configuration.
-        </td>
     <tr>
         <td>
             <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">
