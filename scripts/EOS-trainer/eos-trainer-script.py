@@ -54,8 +54,8 @@ with open("training.txt", "r") as file:
     indexIntro = text.index('Press the button to start.\n')
     indexSteps = text.index("Okay, now that you know the parts, let's start with the assembly. Press the button to begin the instructions.\n") 
     indexSteps = indexSteps + 1
-    print("index")
-    print(len(text))
+    # print("index")
+    # print(len(text))
 
 def textToSpeech(text):
     # The neural multilingual voice can speak different languages based on the input text.
@@ -275,7 +275,6 @@ window.title("Trainer")
 
 # Initialize the counter
 contador = indexIntro
-step = 0
 
 # Create label for the image placeholder
 result_image_label = customtkinter.CTkLabel(window, text="")
