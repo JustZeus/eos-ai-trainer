@@ -63,7 +63,7 @@ This will be the configuration and administration element of the solution, devel
            React.js
         </td>
         <td>
-            It is open-source JavaScript library that allows you to create user interfaces for web and mobile applications. React.js with CSS was used to create the web application to manage the training.
+            It is JavaScript library that allows you to create user interfaces for web and mobile applications. React.js with CSS was used to create the web application to manage the training.
         </td>
     </tr>
      </tr>
