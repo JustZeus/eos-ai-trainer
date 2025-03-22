@@ -1,9 +1,25 @@
-Training 1
-Before starting the training:
-Put on the safety equipment, which consists of gloves and goggles.
-This product consists of 5 parts that must be assembled. Let's start by getting to know each one. You will then be given a series of instructions to move on to the next one. Press the confirmation button:
-Press the button to start
-1. Take and familiarize yourself with part 1
-2. Take and familiarize yourself with part 2
-Okay, now that you know the parts, let's start with the assembly. Press the button to begin the instructions
-1 Place piece 1 in the hole of piece 2
+Training 1 
+
+Before starting the training: 
+
+Put on the safety equipment, which consists of gloves and goggles. 
+
+This product consists of 5 parts that must be assembled. Let's start by getting to know each one. You will then be given a series of instructions to move on to the next one. Press the confirmation button: 
+
+Press the button to start.
+
+1. Let’s familiarize with the core part of the assembly, in the upper right side of your working space you will find the core piece of this assembly, this element works as a joint for the controller module on electric Vehicules, it possesses two holes of 11 millimeter of diameter. You will find that one of the sides of the piece is completely flat while the other has a small round next to the start of the holes. 
+
+2. On the upper left side of the workspace, you will find the next part of the assembly. This is a millimetric bolt, with standard thread and with a length of 30 millimeters, this will help to fasten the elements of the assembly. 
+
+3.  On the lower left side of the workspace, you will find the next part of the assembly; this is a millimetric nut; this piece has a threaded hole that will serve to fit piece number two, the bolt. Together this nut and bolt create an easy mechanism to unite two different pieces. 
+
+Okay, now that you know the parts, let's start with the assembly. Press the button to begin the instructions.
+
+1 Take Core Piece described as piece one, inspect it with your hand and identify the completely flat side. Place the core piece in the center of the validation space and push the action button when ready.  
+
+2 Once identified the completely flat side with your right-hand grab the second piece from the upper left side, this will be standard bolt, align one of the core piece holes and pass the bolt though it until the bolt head lays flat against the core piece. While maintaining these two pieces in place, please take the piece number three from the lower left side, this will be the nut, Alling the nut hole with the exceeding part of the bolt and rotate it until both pieces starts assembling, please place this half assembled  piece in the center of the validation space and push the action button when ready. 
+
+3 Repeating the process in the previous step with your right-hand grab the second piece from the upper left side, this will be standard bolt, align the remaining core piece hole and pass the bolt though it until the bolt head lays flat against the core piece flat side. While maintaining these two pieces in place, please take the piece number three from the lower left side, this will be the nut, Alling the nut hole with the exceeding part of the bolt and rotate it until both pieces starts assembling, please place this half assembled  piece in the center of the validation space and push the action button when ready. 
+
+4 Congratulations! You successfully completed the training.

@@ -9,6 +9,7 @@ import msrest.authentication as msRestAuth
 import os, uuid
 import customtkinter
 from PIL import Image
+from openai import AzureOpenAI
 import cv2 as cv
 from threading import Thread
 
@@ -17,33 +18,47 @@ customtkinter.set_appearance_mode("System")  # Modes: system (default), light, d
 customtkinter.set_default_color_theme("green")  # Themes: blue (default), dark-blue, green
 
 # Open the demonstration training file
-with open("training.txt", "r") as file:
+with open("train.txt", "r") as file:
     text = file.readlines()
     # print(text)
     indexIntro = text.index('Press the button to start\n')
+    indexSteps = text.index('Press the button to begin the instructions.\n') 
+    indexSteps = indexSteps + 1
+    # print("index")
+    # print(len(text))
 
-# retrieve environment variables    
 SPEECH_KEY = os.environ[""]
+
 SPEECH_REGION = os.environ[""]
+
 ENDPOINT = os.environ[""]
+
 training_key = os.environ[""]
+
 prediction_key = os.environ[""]
+
 prediction_resource_id = os.environ[""]
+
 project_id = os.environ[""]
+
 iteration_name = os.environ[""]
+
+# Azure credentials
+client = AzureOpenAI(
+  azure_endpoint = "", 
+  api_key="", 
+  api_version=""
+)
+
 #Speach SDK Configuration
 speech_config = speechsdk.SpeechConfig(subscription=SPEECH_KEY, region=SPEECH_REGION)
 audio_config = speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
 
-def textToSpeach(text):
+def textToSpeech(text):
     # The neural multilingual voice can speak different languages based on the input text.
     speech_config.speech_synthesis_voice_name='en-US-AvaMultilingualNeural'
 
     speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
-
-    # Get text from the console and synthesize to the default speaker.
-    # print("Enter some text that you want to speak >")
-    # text = input()
 
     speech_synthesis_result = speech_synthesizer.speak_text_async(text).get()
 
@@ -56,25 +71,145 @@ def textToSpeach(text):
             if cancellation_details.error_details:
                 print("Error details: {}".format(cancellation_details.error_details))
 
+def openAIFunction(question, responseBefore):
+    # label = ttk.Label(text=question)
+    # label.place(x=100, y=100)
+    nowQuestion = {"role": "user", "content": question}
+    message = []
+    if responseBefore == "":
+        message = [nowQuestion]
+    else:
+        message = [responseBefore, nowQuestion]
+
+    assistenMessage = {
+        "role": "system",
+        "content": "Your name is EOS you are an AI assistant that helps individuals to find information regarding the manufacturing industry"
+    }
+
+    message.append(assistenMessage)
+
+    print(message)
+    response = client.chat.completions.create(
+        model="gpt-4o-mini", 
+        messages= message,
+        max_tokens=100
+    )
+    
+    result = response.choices[0].message.content
+
+
+    print(result)
+    textToSpeech(result)
+    if result[len(result) - 1] == "?":
+        speech = recognize_from_microphone()
+        openAIFunction(speech, {"role": "assistant", "content": result})
+
+
+def recognize_from_microphone():
+    speech_config.speech_recognition_language="en-US"
+
+    audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True)
+    speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
+
+    print("Speak into your microphone.")
+    speech_recognition_result = speech_recognizer.recognize_once_async().get()
+
+    if speech_recognition_result.reason == speechsdk.ResultReason.RecognizedSpeech:
+        print("Recognized: {}".format(speech_recognition_result.text))
+        return speech_recognition_result.text
+    elif speech_recognition_result.reason == speechsdk.ResultReason.NoMatch:
+        print("No speech could be recognized: {}".format(speech_recognition_result.no_match_details))
+        textToSpeech("No te entendí, repite la pregunta, por favor")
+        speech = recognize_from_microphone()
+        openAIFunction(speech, "")
+    elif speech_recognition_result.reason == speechsdk.ResultReason.Canceled:
+        cancellation_details = speech_recognition_result.cancellation_details
+        print("Speech Recognition canceled: {}".format(cancellation_details.reason))
+        if cancellation_details.reason == speechsdk.CancellationReason.Error:
+            print("Error details: {}".format(cancellation_details.error_details))
+            print("Did you set the speech resource key and region values?")
+    return ""
+
+
+## empty, half, dissasembly, complete
+validationAnsware = "Correct."
+errorAnsware = "Not correct, try again"
 def start(imageLabel):
     global contador
     global step
-    print(validationService(imageLabel))
-    # if(contador < len(text)):
-    #     if contador <= indexIntro:
-    #         speechText = ""
-    #         for c, t in enumerate(text):
-    #             if c < indexIntro:
-    #                 speechText += t
-    #         print(speechText)
-    #         SpeechToText(speechText)     
-    #     SpeechToText(text[contador])
-    #     print(text[contador])
-    # else:
-    #     SpeechToText("The training has ended very well.")
-    #     print("The training has ended very well.")
-    # contador += 1
-    # step += 1
+
+    validation = validationService(imageLabel)
+    # print(validationService(imageLabel))
+
+    if(contador < len(text)):
+        if contador <= indexIntro:
+            speechText = ""
+            for c, t in enumerate(text):
+                if c < indexIntro:
+                    speechText += t
+            # print(speechText)
+            textToSpeech(speechText)
+        if  contador <= indexSteps and contador > indexIntro:
+            # print(text[contador])
+            textToSpeech(text[contador])
+        if indexSteps <= contador:
+            if contador == (indexSteps + 1):
+                if validation == "dissasembly":
+                    # print(validationAnsware )
+                    textToSpeech(validationAnsware)
+                    # print(text[contador])
+                    textToSpeech(text[contador])
+                elif validation == "empty":
+                    # print("The assembly does not appear in the work area, please place the part in the assigned area for validation.")
+                    textToSpeech("The assembly does not appear in the work area, please place the part in the assigned area for validation. And try again")
+                    contador = contador - 1
+                    textToSpeech(text[contador])
+                else:
+                    # print(errorAnsware)
+                    textToSpeech(errorAnsware)
+                    contador = contador - 1
+                    # print(text[contador])
+                    textToSpeech(text[contador])
+            elif contador == (indexSteps + 2):
+                if validation == "half":
+                    # print(validationAnsware )
+                    textToSpeech(validationAnsware)
+                    # print(text[contador])
+                    textToSpeech(text[contador])  
+                elif validation == "empty":
+                    # print("The assembly does not appear in the work area, please place the part in the assigned area for validation.")
+                    textToSpeech("The assembly does not appear in the work area, please place the part in the assigned area for validation. And try again")
+                    contador = contador - 1
+                    textToSpeech(text[contador])
+                else:
+                    # print(errorAnsware)
+                    textToSpeech(errorAnsware)
+                    contador = contador - 1
+                    textToSpeech(text[contador])
+                    # print(text[contador])
+            elif  contador == (indexSteps + 3):
+                if validation == "complete":
+                    # print(validationAnsware )
+                    textToSpeech(validationAnsware)
+                    # print(text[contador] + "If you have any questions, you can ask me anything. Just press the button and ask your question.")
+                    textToSpeech(text[contador] + "If you have any questions, you can ask me anything. Just press the button and ask your question.")
+                elif validation == "empty":
+                    # print("The assembly does not appear in the work area, please place the part in the assigned area for validation.")
+                    textToSpeech("The assembly does not appear in the work area, please place the part in the assigned area for validation. And try again")
+                    contador = contador - 1
+                    textToSpeech(text[contador])
+                else:
+                    # print(errorAnsware)
+                    textToSpeech(errorAnsware)
+                    contador = contador - 1
+                    textToSpeech(text[contador])
+                    # print(text[contador])
+    else:
+        speech = recognize_from_microphone()
+        if speech != "":
+            openAIFunction(speech, "")
+    contador += 1
+    # print(contador)
 
 # The predictionHandler is the function to query the Azure Custom Vision prediction endpoint, 
 # this will validate the tag name with the highest score from the predictions received from the cloud.
@@ -97,8 +232,7 @@ def predictionHandler(id):
             piece_status = sorted_results[0]["tag_name"]
             os.remove(id)
             return [prediction_statement, piece_status]
-        else:
-            return "There were no elements identified"
+   
 # ImageHandler is the function in charge of obtaining a camera capture, write it into memory and updating the display tag in the GUI.
 def imageHandler(imageLabel, id):
     cam_port = 0
@@ -125,9 +259,9 @@ def validationService(imageLabel):
     label = customtkinter.CTkLabel(master=window, text=higher_prediction)
     label.place(relx=0.5, rely=0.75, anchor=customtkinter.CENTER)
     # create and configure a new thread to run a function
-    thread = Thread(target= lambda:textToSpeach(higher_prediction))
+    # thread = Thread(target= lambda:textToSpeach(higher_prediction))
     # start the task in a new thread
-    thread.start()
+    # thread.start()
     return  prediction[1]
 
 # Initialize the Window
