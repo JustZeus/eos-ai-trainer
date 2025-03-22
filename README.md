@@ -35,6 +35,10 @@ EOS will guide the user through the precise steps on the assembly, after each st
 
 Additionally, EOS will function as an interactive agent enhanced with LLM’s to provide the user with information regarding the current training, the end goal of manufactured pieces, the industry, tracking current progress, among other utilities. 
 
+To illustrate this concept is the following diagram, which describes the key elements of the training station, it’s important to highlight that the user will be receiving audio feedback at all moments through the usage of headphones or speakers. 
+
+![workstation concept](https://raw.githubusercontent.com/JustZeus/eos-ai-trainer/main/img/eos_workstation_concept.JPG "Workstation Concept")
+
 ### Trainer administration portal 
 
 This will be the configuration and administration element of the solution, developed to help supported employment coaches to launch and configure the different trainings, track the progress of users and tweak the system behavior.  
@@ -89,12 +93,14 @@ This will be the configuration and administration element of the solution, devel
 </table>
 
 ## Cloud Architecture
+- The following diagram describes the end-goal architecture of this project which will allow scalability and reliability
+
 ![cloud architecture diagram](https://raw.githubusercontent.com/JustZeus/eos-ai-trainer/main/img/EOS_Azure_Arch.png "Cloud Architecture")
 
 
 ## Demo
 
-### Frontend
+### Trainer administration portal
 
 The web application for managing workouts consists of a login and a dashboard, which displays the workouts that have been created, their progress, and execution status. You can also start a new workout and view the one currently running.
 
@@ -127,3 +133,22 @@ In the following three images you can see that the list of workouts can be filte
 - The name of the workout (example: Assembly A96).
 
 ![Frontend Dashboard](https://raw.githubusercontent.com/JustZeus/eos-ai-trainer/main/img/8-dashboard.png "Frontend")
+
+### Trainer Station
+To simulate the assembly of an automotive piece we designed, and 3D printed a small set of pieces, the core piece, a millimetric bolt and the matching nut. 
+
+To simulate the assembly of an automotive component, we designed and 3D printed a set of pieces, including the core piece (A), a millimetric bolt (B), and the matching nut (C). Each piece was painted in different colors to enable our custom computer to easily identify them. 
+
+![Training station demo](https://raw.githubusercontent.com/JustZeus/eos-ai-trainer/main/img/eos_workstation_concept_2.JPG "Training station demo")
+
+Our Enhanced Orienting Space will provide comprehensive guidance to the user. Initially, EOS will speak to the user, first by presenting industrial safety recommendations to ensure user safety. Following this, EOS will introduce the training session, starting by helping the user to familiarize themselves with each assembly piece. 
+
+Once the user confirms their familiarity with the various pieces, EOS will start the training by offering step-by-step guidance. Utilizing advanced computer vision technology, EOS will verify if the user correctly assembles the piece.This technology offers substantial assistance to visually impaired individuals in performing assembly tasks within manufacturing environments. 
+
+This validation is performed using a trained custom vision model, which can accurately identify whether a piece is disassembled, partially assembled, or fully assembled.
+
+![Training custom vision](https://raw.githubusercontent.com/JustZeus/eos-ai-trainer/main/img/training_custom_vision.JPG" Training custom vision")
+
+For demonstration purposes, and to simulate a physical action button, we created a graphical user interface that enables the user to provide feedback to the system by clicking the mouse. Ideally, this would be replaced with a physical button featuring haptic feedback. 
+
+Furthermore, the system is potentiated with a Large Language Model (LLM) that provides users with useful information regarding the current process. This integration ensures that users receive real-time insights and detailed explanations, enhancing their understanding and efficiency during the assembly tasks. 
