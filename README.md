@@ -152,4 +152,15 @@ This validation is performed using a trained custom vision model, which can accu
 
 For demonstration purposes, and to simulate a physical action button, we created a graphical user interface that enables the user to provide feedback to the system by clicking the mouse. Ideally, this would be replaced with a physical button featuring haptic feedback. 
 
+![Software Image](https://raw.githubusercontent.com/JustZeus/eos-ai-trainer/main/img/eos-software-action-button.png "Software Image")
+
+
 Furthermore, the system is potentiated with a Large Language Model (LLM) that provides users with useful information regarding the current process. This integration ensures that users receive real-time insights and detailed explanations, enhancing their understanding and efficiency during the assembly tasks. 
+
+### The demonstration code can be initiated by running the following script:
+*Please notice that Azure Credentials will be needed for the execution* 
+
+Inside the /scripts directory:
+```
+python3 eos-trainer-script.py
+```
