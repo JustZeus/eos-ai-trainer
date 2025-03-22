@@ -147,7 +147,8 @@ Once the user confirms their familiarity with the various pieces, EOS will start
 
 This validation is performed using a trained custom vision model, which can accurately identify whether a piece is disassembled, partially assembled, or fully assembled.
 
-![Training custom vision](https://raw.githubusercontent.com/JustZeus/eos-ai-trainer/main/img/training_custom_vision.JPG" Training custom vision")
+![VIsion Model Training](https://raw.githubusercontent.com/JustZeus/eos-ai-trainer/main/img/training_custom_vision.JPG "Vision Model Training")
+
 
 For demonstration purposes, and to simulate a physical action button, we created a graphical user interface that enables the user to provide feedback to the system by clicking the mouse. Ideally, this would be replaced with a physical button featuring haptic feedback. 
 
